@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from model.punctuation import punc
+from model.punctuate import punctuate
 
 app = Flask(__name__)
 
@@ -13,8 +13,7 @@ def upload():
 def index():
     if request.method == 'POST':
         text = request.form['text']
-        return render_template("index.html", punc=text)
-        # return render_template("index.html", punc=punc(text))
+        return render_template("index.html", punc=punctuate(text))
 
 
 if __name__ == '__main__':
